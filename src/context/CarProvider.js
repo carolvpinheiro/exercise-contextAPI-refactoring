@@ -8,8 +8,10 @@ class CarProvider extends React.Component {
       redCar: false,
       blueCar: false,
       yellowCar: false,
+      colorSignal: 'red',
     }
     this.getClickButtonCar = this.getClickButtonCar.bind(this);
+    this.getClorSignal = this.getClorSignal.bind(this);
   }
 
   getClickButtonCar(value, state) {
@@ -27,10 +29,18 @@ class CarProvider extends React.Component {
       });
   }
 
+  getClorSignal(value) {
+    if (value === 'red') this.setState({ colorSignal: 'red' });
+    if (value === 'yellow') this.setState({ colorSignal: 'yellow' });
+    if (value === 'green') this.setState({ colorSignal: 'green' });
+  }
+
   render() {
     const { children } = this.props;
     return (    
-      <CarContext.Provider value={{...this.state, getClick: this.getClickButtonCar}}>
+      <CarContext.Provider value={
+        {...this.state, getClick: this.getClickButtonCar, getClor: this.getClorSignal}
+      }>
         { children }
       </CarContext.Provider>
     );

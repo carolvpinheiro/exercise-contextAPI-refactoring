@@ -7,7 +7,6 @@ import carYellow from './images/carYellow.jpeg';
 class GoCars extends Component {
     render() {
     const { redCar, blueCar, yellowCar, getClick } = this.context;
-    console.log(redCar);
     return (
       <div>
         <div>
